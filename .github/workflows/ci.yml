@@ -6,5 +6,15 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Say hello
-        run: echo "Hello from CI!"
+      - name: Show files before checkout
+        run: |
+          pwd
+          ls -la
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Show files after checkout
+        run: |
+          pwd
+          ls -la
