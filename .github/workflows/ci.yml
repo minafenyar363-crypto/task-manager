@@ -3,18 +3,21 @@ name: CI Pipeline
 on: push
 
 jobs:
-  hello:
+  test-backend:
     runs-on: ubuntu-latest
     steps:
-      - name: Show files before checkout
-        run: |
-          pwd
-          ls -la
-
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Show files after checkout
-        run: |
-          pwd
-          ls -la
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm install
+
+      - name: Run tests
+        working-directory: ./backend
+        run: npm test
