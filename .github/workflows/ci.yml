@@ -36,3 +36,5 @@ jobs:
       - name: Run tests
         working-directory: ./backend
         run: npm test
+        env:
+          DB_HOST: localhost
